@@ -1,16 +1,22 @@
 ### Hi there 👋
 
-<!--
-**PepyYR/PepyYR** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+ORG 0000H
+UP1:MOV DPTR, #0100H
+MOV R5,#11
+UP: CLR A
+MOVC A,@A+DPTR
+MOV P2,A
+ACALL DELAY
+INC DPTR
+DJNZ R5,UP
+SJMP UP1
 
-Here are some ideas to get you started:
+DELAY:MOV R2,#255
+M1:MOV R3,#255
+M: DJNZ R3,M
+DJNZ R2,M1
+RET
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+ORG 0100H
+DB 00,25,50,75,100,125,150,175,200,225,250
+END
